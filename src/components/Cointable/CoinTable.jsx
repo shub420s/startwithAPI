@@ -1,15 +1,17 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { fetchCoinData } from "../../services/fetchCoinData";
 import { useQueries, useQuery } from "react-query";
+import { CurrencyContext } from "../../context/currencyContext";
 
 
 
 
 function CoinTable(){
 
+    const {currency} = useContext(CurrencyContext);
     const [page,setPage] = useState(1);
    
-    const {data,isLoading,isError,error} = useQuery(['coin',page],()=>fetchCoinData(page,'usd'),{
+    const {data,isLoading,isError,error} = useQuery(['coin',page,currency],()=>fetchCoinData(page,currency),{
         // retry: 2,
         // retryDelay: 1000,
         cacheTime: 1000 * 60 * 2,
@@ -74,11 +76,11 @@ function CoinTable(){
 
                             </div>
 
-                            <div className="basis-[25%]" >
+                            <div className="basis-[20%]" >
                                 {coin.high_24h}
                             </div>
 
-                            <div className="basis-[20%]" >
+                            <div className="basis-[25%]" >
                                 {coin.price_change_24h}
                             </div>
 
