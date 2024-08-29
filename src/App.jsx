@@ -9,9 +9,9 @@ function App() {
 
   return (
    <>
-   <CurrencyContext.Provider value={{currency,setCurrency}} >
+   {/* <CurrencyContext.Provider value={{currency,setCurrency}} > */}
     <HomePage/>
-   </CurrencyContext.Provider>
+   {/* </CurrencyContext.Provider> */}
    </>
   )
 }
